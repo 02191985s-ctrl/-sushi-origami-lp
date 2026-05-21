@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sushi Origami × STAR ISLAND | One-Night Luxury Sushi Cruise</title>
+    <meta
+      name="description"
+      content="Sushi Origami × STAR ISLAND — A one-day-only luxury sushi cruise with fireworks, skyline views, and an unforgettable omakase journey."
+    />
+    <style>
+      :root {
+        --bg: #04040a;
+        --bg-grad-top: #090c1a;
+        --bg-grad-mid: #111a35;
+        --bg-grad-btm: #04040a;
+        --text-main: #f7f8ff;
+        --text-sub: #a8b0cc;
+        --gold: #e0c27a;
+        --gold-soft: #fff2c7;
+        --line: rgba(224, 194, 122, 0.25);
+        --card: rgba(8, 13, 28, 0.78);
+        --cta: linear-gradient(135deg, #f6de9a 0%, #d8ac53 55%, #8c6425 100%);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: "Inter", "Hiragino Sans", "Noto Sans JP", "Segoe UI", sans-serif;
+        color: var(--text-main);
+        background:
+          radial-gradient(circle at 85% 10%, rgba(80, 111, 223, 0.2), transparent 30%),
+          radial-gradient(circle at 15% 20%, rgba(224, 194, 122, 0.15), transparent 35%),
+          linear-gradient(180deg, var(--bg-grad-top), var(--bg-grad-mid) 45%, var(--bg-grad-btm));
+        overflow-x: hidden;
+      }
+
+      .lp {
+        width: min(100%, 520px);
+        margin: 0 auto;
+        padding: 20px 16px 40px;
+        position: relative;
+      }
+
+      .noise {
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        opacity: 0.08;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.8) 0.35px, transparent 0.35px);
+        background-size: 3px 3px;
+        mix-blend-mode: soft-light;
+      }
+
+      .hero {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px 18px 18px;
+        background: linear-gradient(160deg, rgba(20, 31, 66, 0.62), rgba(5, 7, 15, 0.94));
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        overflow: hidden;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(1px);
+      }
+
+      .hero::before {
+        width: 220px;
+        height: 220px;
+        top: -120px;
+        right: -85px;
+        background: radial-gradient(circle, rgba(248, 226, 157, 0.5), transparent 68%);
+      }
+
+      .hero::after {
+        width: 180px;
+        height: 180px;
+        bottom: -85px;
+        left: -75px;
+        background: radial-gradient(circle, rgba(120, 147, 239, 0.45), transparent 70%);
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 11px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      h1 {
+        margin: 18px 0 8px;
+        font-size: clamp(28px, 10vw, 44px);
+        line-height: 1.06;
+        letter-spacing: 0.01em;
+      }
+
+      .sub-jp {
+        margin: 0 0 18px;
+        font-size: 13px;
+        color: var(--text-sub);
+      }
+
+      .lead {
+        margin: 0 0 20px;
+        font-size: 14px;
+        line-height: 1.75;
+        color: #e7ebff;
+      }
+
+      .cta {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 14px 20px;
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+        color: #1f1608;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: var(--cta);
+        box-shadow: 0 10px 25px rgba(224, 194, 122, 0.35);
+      }
+
+      section {
+        margin-top: 16px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 14px;
+        background: var(--card);
+        backdrop-filter: blur(4px);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 19px;
+        letter-spacing: 0.04em;
+      }
+
+      .section-sub {
+        margin: 5px 0 14px;
+        font-size: 12px;
+        color: var(--text-sub);
+      }
+
+      .feature-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .feature {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.25);
+      }
+
+      .feature strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--gold-soft);
+      }
+
+      .feature p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.65;
+        color: #dfe5ff;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .timeline-item:last-child { border-bottom: 0; }
+      .time { color: var(--gold); font-weight: 700; font-size: 13px; }
+      .desc { font-size: 13px; line-height: 1.7; }
+
+      .footer-cta {
+        margin-top: 18px;
+        text-align: center;
+        font-size: 11px;
+        color: var(--text-sub);
+      }
+
+      .fireworks {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .burst {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #fff, transparent 70%);
+        animation: explode 2.8s ease-out infinite;
+      }
+
+      .b1 { top: 22%; left: 72%; animation-delay: 0.1s; }
+      .b2 { top: 12%; left: 26%; animation-delay: 0.8s; }
+      .b3 { top: 34%; left: 12%; animation-delay: 1.4s; }
+
+      @keyframes explode {
+        0% { transform: scale(0.4); opacity: 0; }
+        20% { opacity: 1; }
+        100% { transform: scale(6.8); opacity: 0; }
+      }
+
+      @media (min-width: 720px) {
+        .lp { padding-top: 32px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise"></div>
+    <main class="lp">
+      <header class="hero">
+        <div class="fireworks">
+          <span class="burst b1"></span>
+          <span class="burst b2"></span>
+          <span class="burst b3"></span>
+        </div>
+        <span class="tag">One-Day Exclusive Voyage</span>
+        <h1>Sushi Origami × STAR ISLAND</h1>
+        <p class="sub-jp">鮨おりがみ × STAR ISLAND｜1日限定 特別寿司クルーズ</p>
+        <p class="lead">
+          Indulge in a rare night where omakase craftsmanship, Tokyo bay skyline, and synchronized
+          fireworks unite into one cinematic luxury cruise.
+        </p>
+        <a class="cta" href="#reserve">Reserve Now</a>
+      </header>
+
+      <section>
+        <h2>The Experience</h2>
+        <p class="section-sub">体験のハイライト</p>
+        <div class="feature-list">
+          <article class="feature">
+            <strong>Private Omakase Counter</strong>
+            <p>Master chefs from Sushi Origami serve a limited seasonal course onboard.</p>
+          </article>
+          <article class="feature">
+            <strong>Night Skyline Cruise</strong>
+            <p>Glide through glittering waterfront views in an intimate, premium atmosphere.</p>
+          </article>
+          <article class="feature">
+            <strong>STAR ISLAND Fireworks</strong>
+            <p>Enjoy front-row fireworks choreographed with music over the dark bay horizon.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>One-Night Schedule</h2>
+        <p class="section-sub">開催スケジュール（1日限定）</p>
+        <div class="timeline-item">
+          <div class="time">18:00</div>
+          <div class="desc">Boarding & welcome champagne ・ 乗船・ウェルカムシャンパン</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">19:00</div>
+          <div class="desc">Omakase course begins ・ おまかせコース開始</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">20:15</div>
+          <div class="desc">STAR ISLAND fireworks show ・ 花火ショー鑑賞</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">21:30</div>
+          <div class="desc">Afterglow desserts & return cruise ・ デザート・帰港</div>
+        </div>
+      </section>
+
+      <section id="reserve">
+        <h2>Limited Seats</h2>
+        <p class="section-sub">先着順・完全予約制</p>
+        <p class="lead" style="margin-bottom: 14px;">
+          Only 60 guests. A once-in-a-year evening for those who seek extraordinary dining and art.
+        </p>
+        <a class="cta" href="#" aria-label="Reserve your seat now">Reserve Now</a>
+      </section>
+
+      <p class="footer-cta">Sushi Origami × STAR ISLAND © Exclusive Night Cruise</p>
+    </main>
+
+    <script>
+      document.querySelectorAll('.cta[href="#"]').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Reservation desk will open soon. ご予約フォームは準備中です。');
+        });
+      });
+    </script>
+  </body>
+</html>
