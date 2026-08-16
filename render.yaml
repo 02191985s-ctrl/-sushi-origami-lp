@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: family-hotel-sharing-app
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
