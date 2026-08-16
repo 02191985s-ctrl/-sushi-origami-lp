@@ -2,77 +2,103 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ホテル共有">
+<meta name="theme-color" content="#f2f2f7">
 <title>家族ホテル共有帳</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="app-header">
-  <h1>🏨 家族ホテル共有帳</h1>
-  <p class="tagline">𝕏やInstagram、Googleマップ、楽天トラベルで見つけた「行きたいホテル」を家族で共有しよう</p>
-</header>
+<div class="app">
 
-<main>
-  <section class="card form-card">
-    <h2>ホテルを追加</h2>
-    <form id="hotel-form">
-      <div class="field">
-        <label for="name">ホテル名 *</label>
-        <input type="text" id="name" placeholder="例：〇〇温泉 △△の宿" required>
+  <header class="nav-bar" id="nav-bar">
+    <div class="nav-bar-row">
+      <h1 class="large-title">ホテル一覧</h1>
+      <button type="button" id="open-add" class="round-btn" aria-label="ホテルを追加">
+        <span>＋</span>
+      </button>
+    </div>
+    <div class="chip-scroll" id="chip-scroll"></div>
+  </header>
+
+  <main class="content" id="hotel-list">
+    <div class="empty-state">
+      <div class="empty-icon">🏨</div>
+      <p class="empty-title">まだ登録がありません</p>
+      <p class="empty-sub">右上の ＋ から、気になったホテルを追加しましょう</p>
+    </div>
+  </main>
+
+</div>
+
+<!-- 追加シート -->
+<div class="sheet-overlay" id="add-overlay"></div>
+<div class="sheet" id="add-sheet" role="dialog" aria-modal="true">
+  <div class="sheet-grabber"></div>
+  <div class="sheet-header">
+    <button type="button" class="sheet-btn" id="add-cancel">キャンセル</button>
+    <h2 class="sheet-title">ホテルを追加</h2>
+    <button type="submit" form="hotel-form" class="sheet-btn sheet-btn-primary" id="add-submit">追加</button>
+  </div>
+
+  <form id="hotel-form" class="ios-form">
+    <div class="form-group">
+      <div class="form-row">
+        <label for="name">ホテル名</label>
+        <input type="text" id="name" placeholder="〇〇温泉 △△の宿" required autocomplete="off">
       </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label for="prefecture">都道府県 *</label>
-          <select id="prefecture" required>
-            <option value="">選択してください</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="source">見つけた場所</label>
-          <select id="source">
-            <option value="𝕏 (Twitter)">𝕏 (Twitter)</option>
-            <option value="Instagram">Instagram</option>
-            <option value="Googleマップ">Googleマップ</option>
-            <option value="楽天トラベル">楽天トラベル</option>
-            <option value="WEBサイト">WEBサイト</option>
-            <option value="その他">その他</option>
-          </select>
-        </div>
+      <div class="form-row">
+        <label for="prefecture">都道府県</label>
+        <select id="prefecture" required>
+          <option value="">選択してください</option>
+        </select>
       </div>
-
-      <div class="field">
+      <div class="form-row">
+        <label for="source">見つけた場所</label>
+        <select id="source">
+          <option value="𝕏 (Twitter)">𝕏 (Twitter)</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Googleマップ">Googleマップ</option>
+          <option value="楽天トラベル">楽天トラベル</option>
+          <option value="WEBサイト">WEBサイト</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <div class="form-row">
         <label for="url">リンクURL</label>
-        <input type="url" id="url" placeholder="https://...">
+        <input type="url" id="url" placeholder="https://..." autocomplete="off">
       </div>
+    </div>
 
-      <div class="field">
+    <div class="form-group">
+      <div class="form-row form-row-stacked">
         <label for="memo">メモ</label>
-        <textarea id="memo" rows="2" placeholder="気になったポイントなど"></textarea>
+        <textarea id="memo" rows="3" placeholder="気になったポイントなど"></textarea>
       </div>
+    </div>
 
-      <div class="field">
+    <div class="form-group">
+      <div class="form-row">
         <label for="addedBy">あなたの名前</label>
-        <input type="text" id="addedBy" placeholder="例：お母さん">
+        <input type="text" id="addedBy" placeholder="お母さん" autocomplete="off">
       </div>
-
-      <button type="submit" class="btn-primary">追加する</button>
-      <p id="form-error" class="error"></p>
-    </form>
-  </section>
-
-  <section class="card list-card">
-    <div class="list-header">
-      <h2>みんなの候補</h2>
-      <select id="filter-prefecture">
-        <option value="">すべての都道府県</option>
-      </select>
     </div>
-    <div id="hotel-list" class="hotel-list">
-      <p class="empty-state">まだホテルが登録されていません。最初の1件を追加してみましょう！</p>
-    </div>
-  </section>
-</main>
+
+    <p id="form-error" class="form-error"></p>
+  </form>
+</div>
+
+<!-- 削除アクションシート -->
+<div class="action-sheet-overlay" id="delete-overlay"></div>
+<div class="action-sheet" id="delete-sheet" role="dialog" aria-modal="true">
+  <div class="action-sheet-group">
+    <div class="action-sheet-title" id="delete-target-name"></div>
+    <button type="button" class="action-sheet-btn destructive" id="confirm-delete">削除</button>
+  </div>
+  <button type="button" class="action-sheet-btn cancel" id="cancel-delete">キャンセル</button>
+</div>
 
 <script src="app.js"></script>
 </body>
