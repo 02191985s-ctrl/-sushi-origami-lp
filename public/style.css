@@ -1,0 +1,248 @@
+:root {
+  --bg: #fdf6ec;
+  --card-bg: #ffffff;
+  --primary: #ff7a59;
+  --primary-dark: #e85f3d;
+  --text: #33302e;
+  --muted: #8a8178;
+  --border: #ece2d4;
+  --heart: #ff4d6d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.app-header {
+  text-align: center;
+  padding: 32px 16px 20px;
+}
+
+.app-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.8rem;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.field {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+input, select, textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #fff;
+  color: var(--text);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.error {
+  color: #d33;
+  font-size: 0.85rem;
+  min-height: 1em;
+  margin: 8px 0 0;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.list-header select {
+  max-width: 180px;
+}
+
+.empty-state {
+  color: var(--muted);
+  text-align: center;
+  padding: 24px 0;
+}
+
+.hotel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.hotel-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  position: relative;
+}
+
+.hotel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.hotel-name {
+  font-weight: bold;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.hotel-name:hover {
+  color: var(--primary);
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 6px 0;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  background: #f5efe4;
+  color: var(--muted);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.hotel-memo {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 6px 0;
+  white-space: pre-wrap;
+}
+
+.hotel-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.hotel-meta {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.like-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.like-btn .heart {
+  transition: transform 0.15s ease;
+}
+
+.like-btn.liked {
+  color: var(--heart);
+  border-color: var(--heart);
+}
+
+.like-btn.liked .heart {
+  transform: scale(1.15);
+}
+
+.like-btn:active .heart {
+  transform: scale(1.3);
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.78rem;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.delete-btn:hover {
+  color: #d33;
+}

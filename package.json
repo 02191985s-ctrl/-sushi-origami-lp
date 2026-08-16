@@ -1,0 +1,12 @@
+{
+  "name": "family-hotel-sharing-app",
+  "version": "1.0.0",
+  "description": "家族で行きたいホテルを共有できるシンプルなアプリ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

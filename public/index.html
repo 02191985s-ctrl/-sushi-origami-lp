@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家族ホテル共有帳</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>🏨 家族ホテル共有帳</h1>
+  <p class="tagline">𝕏やInstagram、Googleマップ、楽天トラベルで見つけた「行きたいホテル」を家族で共有しよう</p>
+</header>
+
+<main>
+  <section class="card form-card">
+    <h2>ホテルを追加</h2>
+    <form id="hotel-form">
+      <div class="field">
+        <label for="name">ホテル名 *</label>
+        <input type="text" id="name" placeholder="例：〇〇温泉 △△の宿" required>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="prefecture">都道府県 *</label>
+          <select id="prefecture" required>
+            <option value="">選択してください</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="source">見つけた場所</label>
+          <select id="source">
+            <option value="𝕏 (Twitter)">𝕏 (Twitter)</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Googleマップ">Googleマップ</option>
+            <option value="楽天トラベル">楽天トラベル</option>
+            <option value="WEBサイト">WEBサイト</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="url">リンクURL</label>
+        <input type="url" id="url" placeholder="https://...">
+      </div>
+
+      <div class="field">
+        <label for="memo">メモ</label>
+        <textarea id="memo" rows="2" placeholder="気になったポイントなど"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="addedBy">あなたの名前</label>
+        <input type="text" id="addedBy" placeholder="例：お母さん">
+      </div>
+
+      <button type="submit" class="btn-primary">追加する</button>
+      <p id="form-error" class="error"></p>
+    </form>
+  </section>
+
+  <section class="card list-card">
+    <div class="list-header">
+      <h2>みんなの候補</h2>
+      <select id="filter-prefecture">
+        <option value="">すべての都道府県</option>
+      </select>
+    </div>
+    <div id="hotel-list" class="hotel-list">
+      <p class="empty-state">まだホテルが登録されていません。最初の1件を追加してみましょう！</p>
+    </div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
